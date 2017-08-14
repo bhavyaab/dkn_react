@@ -1,4 +1,4 @@
-
+import cowsay from 'cowsay-browser'
 import React from 'react'
 import { render } from 'react-dom'
 
@@ -18,6 +18,11 @@ class App extends React.Component {
     this.state = {
       title: 'state title',
       count: 0,
+      say: cowsay.say({
+        text : 'I\'m a moooodule',
+        e : 'oO',
+        T : 'U ',
+      }),
     }
     this.addCount = this.addCount.bind(this)
   }
@@ -26,6 +31,7 @@ class App extends React.Component {
     this.setState(state => {
       return {
         count: state.count + 1,
+        say:cowsay.say({text: 'this is new'}),
       }
     })
 
@@ -34,7 +40,7 @@ class App extends React.Component {
     return (
         <div>
         <Navbar  />
-           <h6>Hello React Component {this.state.title}</h6>
+           <h6>Hello React Component {this.state.say}</h6>
            <p> Counter: {this.state.count} </p>
            <button onClick={this.addCount}>new count state : {this.state.count}</button>
         </div>
